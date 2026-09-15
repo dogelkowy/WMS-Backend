@@ -1,20 +1,27 @@
 namespace Warehouse.Domain.Entities;
 
+public enum UserRole
+{
+    User,
+    Warehouseman,
+    Administrator
+}
+
 public class User
 {
     public int Id { get; private set; }
 
-    public string Username { get; private set; } = string.Empty;
+    public string Username { get; set; } = string.Empty;
 
-    public string PasswordHash { get; private set; } = string.Empty;
+    public string PasswordHash { get; set; } = string.Empty;
 
-    public string Email { get; private set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
 
-    public bool Role { get; private set; }
+    public UserRole Role { get; set; } = UserRole.User;
 
-    public DateTime CreatedAt { get; private set; }
+    public DateTime CreatedAt { get; set; }
 
-    private User()
+    public User()
     {
     }
 
@@ -22,7 +29,7 @@ public class User
         string username,
         string passwordHash,
         string email,
-        bool role)
+        UserRole role)
     {
         Username = username;
         PasswordHash = passwordHash;
